@@ -1,0 +1,34 @@
+name: daul_inreface_starter
+
+services:
+  web:
+    image: starter-img
+    container_name: starter-container
+    build: .
+    command: python /app/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    environment:
+      - "SECRET_KEY=${DJANGO_SECRET_KEY}"
+      - "DB_NAME=${DB_NAME}"
+      - "DB_USER=${DB_USER}"
+      - "DB_PASSWORD=${DB_PASSWORD}"
+    depends_on:
+      - db
+  db:
+    image: postgres:14.19-alpine3.21
+    container_name: postgres-starter-container
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+      - "DB_NAME=${DB_NAME}"
+      - "DB_USER=${DB_USER}"
+      - "DB_PASSWORD=${DB_PASSWORD}"
+      - "DB_HOST=${DB_HOST}"
+      - "DB_PORT=${DB_PORT}"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
