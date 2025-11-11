@@ -18,7 +18,7 @@
 ## 🚀 Why this starter?  
 When starting a full‑stack Django project (for example a project with both a web interface and a REST API), you don’t want to waste time on boilerplate setup.  
 This starter gives you:  
-- Django configured and ready.  
+- Django & DRF configured and ready.  
 - PostgreSQL as the database, running in Docker.  
 - Docker & Docker Compose setup for easy, consistent environment.  
 - Virtualenv support for running the project locally without Docker.
